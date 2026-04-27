@@ -1,73 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zachary Hunter | AI & Construction</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Army Engineer Construction Management in Alaska - Capstone Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+        
+        header .author {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: #2d5a3d;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #a8d5ba;
+        }
+        
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        section h2 {
+            color: #1a472a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #a8d5ba;
+            padding-bottom: 0.5rem;
+        }
+        
+        section h3 {
+            color: #2d5a3d;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.7rem;
+            line-height: 1.8;
+        }
+        
+        .toc {
+            background-color: #f0f0f0;
+            padding: 2rem;
+            border-left: 4px solid #2d5a3d;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #1a472a;
+        }
+        
+        .toc ol {
+            margin-left: 1.5rem;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .featured-project {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid #2d5a3d;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-header h2 {
+            border: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .project-tag {
+            background-color: #2d5a3d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .project-summary {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+        
+        .project-points {
+            list-style-type: none;
+            margin-left: 0;
+        }
+        
+        .project-points li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .project-points li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2d5a3d;
+            font-size: 1.5rem;
+        }
+        
+        .project-reflection {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-style: italic;
+            border-left: 3px solid #a8d5ba;
+        }
+        
+        .book-overview {
+            background-color: #e8f5e9;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .book-overview h2 {
+            color: #1a472a;
+        }
+        
+        footer {
+            background-color: #1a472a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .gallery-item h4 {
+            color: #2d5a3d;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        strong {
+            color: #1a472a;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                flex-direction: column;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .project-tag {
+                margin-top: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <div class="nav-title">Zachary Hunter</div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="articles.html">Articles</a></li>
-        <li><a href="book-review.html">Book Review</a></li>
-      </ul>
+    <header>
+        <h1>Army Engineer Construction Management in Alaska</h1>
+        <p class="subtitle">Final Applied Project Report</p>
+        <p class="subtitle">Master of Science in Construction Facilities Engineering</p>
+        <div class="author">
+            <p><strong>Author:</strong> Zachary A Hunter</p>
+            <p>The University of North Carolina at Charlotte</p>
+            <p>May 2026</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#problems">Problems</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#lessons">Lessons Learned</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#attachments">Attachments</a></li>
+        </ul>
     </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h1>Zachary Hunter</h1>
-      <p class="subtitle">
-        Construction Management & Facilities Engineering<br/>
-        Applying AI and data-driven analysis to improve decision-making across the built environment
-      </p>
-    </section>
-
-    <section class="content">
-      <h2>Portfolio Overview</h2>
-      <p>
-        This portfolio presents a curated collection of academic and applied work completed as part of the <strong>AI in Construction and Facilities Management</strong> course. The projects and analyses showcased here focus on practical applications of artificial intelligence, structured decision-making, and data analytics within construction and facilities engineering.
-      </p>
-      <p>
-        Rather than treating AI as a purely theoretical concept, this portfolio emphasizes real-world use cases such as bid evaluation, risk analysis, lifecycle planning, and facilities maintenance strategy.
-      </p>
-    </section>
-
-    <section class="projects">
-      <article class="project-card">
-        <h3>About Me</h3>
-        <p>Background, education, and professional interests in construction management, facilities engineering, and AI-enabled decision support.</p>
-        <a href="about.html" class="card-link">View Profile →</a>
-      </article>
-
-      <article class="project-card">
-        <h3>Projects</h3>
-        <p>Course projects applying decision analysis, AI concepts, and facilities engineering methods to construction-related problems.</p>
-        <a href="projects.html" class="card-link">View Projects →</a>
-      </article>
-
-      <article class="project-card">
-        <h3>Weekly Articles</h3>
-        <p>Weekly summaries and reflections on readings related to artificial intelligence, automation, and digital transformation in construction.</p>
-        <a href="articles.html" class="card-link">Read Articles →</a>
-      </article>
-
-      <article class="project-card">
-        <h3>Book Review</h3>
-        <p>A critical review examining how AI concepts translate into practical challenges and opportunities for construction and facilities management.</p>
-        <a href="book-review.html" class="card-link">Read Review →</a>
-      </article>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2026 Zachary Hunter · AI in Construction & Facilities Management</p>
-  </footer>
+    
+    <div class="container">
+        <div class="content">
+            <!-- Book Overview Section -->
+            <section id="overview" class="book-overview">
+                <h2>Course Overview & Key Takeaways</h2>
+                <p>
+                    Throughout this course, we explored how artificial intelligence technologies are reshaping industries, with particular relevance to construction, project delivery, and asset management. This review synthesizes key concepts and their practical implications.
+                </p>
+                
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>AI is most effective as a decision-support tool rather than a replacement for human expertise and judgment</li>
+                    <li>Data quality, governance, and integration are critical to successful AI adoption in construction</li>
+                    <li>Ethical considerations, workforce impacts, and organizational change management must be addressed</li>
+                    <li>Construction firms that invest in AI capabilities will gain competitive advantages in efficiency and risk management</li>
+                </ul>
+                
+                <h3>Relevance to Construction</h3>
+                <p>
+                    The concepts discussed in this course align closely with ongoing challenges in construction, including risk management, productivity improvement, lifecycle cost optimization, and workforce development. The intersection of traditional construction knowledge and emerging digital technologies presents a significant opportunity for the industry.
+                </p>
+            </section>
+            
+            <!-- Table of Contents -->
+            <section class="toc">
+                <h3>Contents</h3>
+                <ol>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#problems">Organizational Problem</a></li>
+                    <li><a href="#methodology">Methodology</a></li>
+                    <li><a href="#lessons">Organizational Lessons Learned</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#attachments">Attachments</a></li>
+                </ol>
+            </section>
+            
+            <!-- Introduction -->
+            <section id="introduction">
+                <h2>1. Introduction</h2>
+                <p>
+                    Active-duty Army engineer units working in Alaska operate in an environment that is very different from what most units experience elsewhere in the Army. The combination of extreme weather, remote terrain, and short construction seasons forces units to approach planning and execution with a level of detail and discipline that goes beyond standard construction doctrine. Projects in Alaska can range from airfield improvements to community projects to range control improvements. These missions are important to the Army's presence across the state, showcasing the issues that arise. Some of those are logistical constraints, long-term planning, and workforce concerns.
+                </p>
+                <p>
+                    Personnel are constantly changing across our formation along with mission requirements. As a result, maintaining standards and any form of knowledge leaves with those personnel. Unless the previous individuals created a continuity book to record shortcomings, the environment in Alaska adds many layers of stress, including weather, terrain, logistics, and execution. The paper will focus on the challenges army units face in Alaska and how to improve this environment.
+                </p>
+            </section>
+            
+            <!-- Organizational Problems -->
+            <section id="problems">
+                <h2>2. Organizational Problems</h2>
+                
+                <h3>Cold-Weather Construction Knowledge Gap</h3>
+                <p>
+                    A continuing issue with Alaska is the lack of understanding of cold-weather construction. Unless someone has experience from a different duty station, success will be slow. Creating a continuity portfolio for all would be beneficial. A team's page with different experiences and lessons learned. This allows for mistakes to be corrected and efficiency to be increased. The creation of a road in the lower 48 is different from that in Alaska. At Fort Wainwright, Alaska, roads are built with a geotextile fabric base layer and a coarse/fine aggregate intermediate/top layer. For reference only: the clearing of trees is underway. Compacting in lifts varying from 2-4", depending on areas. This is different compared to the level of depth in the lower 48.
+                </p>
+                
+                <h3>Environmental Factors & Construction Season</h3>
+                <p>
+                    Living in Alaska, you begin to learn that the environment in which you build dictates how successful you are. More than half of your year is cold, with temperatures below 32 degrees, and others are below 0 degrees. This affects not only personnel, equipment, and logistics, but also the environment. From how high permafrost exists in soil, the free-thaw cycle, and snow loads. The window to build is during the summer, and to excavate a site quickly. Once this occurs, interior trades can work; if not, waiting until the summer will drastically extend the schedule. Weather, logistical support, and a well-planned schedule will create success in Alaska.
+                </p>
+                
+                <h3>Logistics & Equipment Management</h3>
+                <p>
+                    The timeframe to build is also a small window with winter always coming around the corner. During the cold months, planning, resource planning, and maintenance of equipment is critical. The process of getting replacement parts to Alaska is not a quick turnaround. On the other hand, you are always a soldier, so mission readiness is another planning factor. Small delays in equipment not fully mission capable or not material on hand will make or break a project. In the winter months if items can be stored in large, covered shelters it will elevate headaches. Small concerns can truly destroy a timeline pushing into another year or not meeting mission success. Learning this firsthand moving a twelve-man team from Central Alaska to a remote village in southern Alaska. Considering the rainy season southern Alaska encounters or the cold weather beginning in September.
+                </p>
+                
+                <h3>Personnel Turnover & Knowledge Continuity</h3>
+                <p>
+                    Concerns with constant personnel change is a reoccurrence in the military. Something that will always happen. In the unit currently in a continuity from one leader to the next does not exist. So I have worked on making a Teams page for my platoon for the next person. From there scaling it to the company level so all coworkers accessing. Making not only my life easier but the next. A folder with previous projects and all documents included. After Action reviews take place the completion of all projects to learn sustains/improves. Taking it from one project to another has shown great success in all aspects of work. Efficiency has increased with visual creation and decreased the time it takes to complete a task.
+                </p>
+                
+                <h3>Risk Management & Regulatory Compliance</h3>
+                <p>
+                    Everyone views risk differently. Some choose to proceed with caution, while others will drive right on, disregarding warnings. While working here in Alaska, caution is warranted due to many environmental concerns. Abiding by the laws and regulations set forth will lead to success; if not, fines will follow. Those fines are ones the unit will have to pay from its already small annual budget. The risk-versus reward isn't worth it in Alaska.
+                </p>
+            </section>
+            
+            <!-- Methodology -->
+            <section id="methodology">
+                <h2>3. Methodology</h2>
+                <p>
+                    The first step in developing a construction management structure is to understand operational conditions in Alaska—review of permafrost maps, logistical networks, previous construction projects, and climate data. Historical construction methods will provide insight into what works and does not. Determining where a project will be constructed determines the length of the schedule. This highlights the environmental factors influencing every aspect of the project, from design to material selection to scheduling and execution.
+                </p>
+                
+                <h3>Workforce Assessment & Training Evaluation</h3>
+                <p>
+                    A survey showcased current shortfalls. Some were identified as: workforce concerns, unskilled laborers, limited arctic construction experience, and continuity between leadership. These issues revealed both problems within units in Alaska and professional military education (PME). Continuous leadership turnover will reveal the same failures repeatedly. The need for dialogue will increase efficiency across the formation. Concern about the labor force due to soldiers recently trained for new jobs with no field experience. All lessons are learned on the job or from leaders with experience in other locations. However, nothing compares to the great Alaskan conditions.
+                </p>
+                
+                <h3>Development of Integrated Management Structure</h3>
+                <p>
+                    The last step is to develop a construction management structure modified to Alaska's unique circumstances. The focus is on logistical planning, creating standard operating procedures (SOPs), and concise decision-making. Creating this is meant to be streamlined so that all can access this information. It contains a wide range of missions such as road improvements, area clearing, and airfield improvements. All lessons learned can be shared with local, federal, and state agencies.
+                </p>
+            </section>
+            
+            <!-- Organizational Lessons Learned -->
+            <section id="lessons">
+                <h2>4. Organizational Lessons Learned</h2>
+                
+                <h3>Knowledge Distribution & Organizational Learning</h3>
+                <p>
+                    To improve the unit's overall readiness, knowledge cannot depend on a single person. It needs the wealth to be spread out if not located in one spot, so many individuals can learn. With personnel rotating often, experience can be gained and applied to events, leading to improvements in training cycles, leaders' professional development, and planning tools. When personnel change, the experienced ones can share the lessons firsthand. With each training cycle, lessons will be gathered and brought to light. There are many ways to skin a cat, but some are more effective than others. The ways that work need to be highlighted.
+                </p>
+                
+                <h3>Logistics: The Foundation of Success</h3>
+                <p>
+                    Logistics controls everything in Alaska. Goods are not made here, so they must be transported by plane, rail, or boat to reach their destination. This will play into when items can be delivered and where. Items can still move in the wintertime, but some methods may not be used. This put a constraint on scheduling. When units need to move equipment from Anchorage to Fairbanks, it is a massive undertaking. It is only 356 miles away, but even driving that distance becomes dangerous when driving military vehicles. An alternative is by rail, but vehicles must meet Alaska Rail's strict requirements. Logistic movements are key, and learning them is necessary to succeed.
+                </p>
+                
+                <h3>Standardization Through Systems & Templates</h3>
+                <p>
+                    Creating a standard across the board is required for these templates, checklists, and a Teams page. The teams page will have each section broken down into admin, training, and schools. Templates for all admin data for soldiers will be available so leaders can quickly answer questions when needed. For PowerPoint training templates, they are located so that all are consistent and not different across the board. School templates, including memos, needed to be signed or altered. Often, small corrections will need to be updated when commanders leave, or headers will need to be altered. When new people arrive, allow them access to the teams page so a soft transition occurs. Allows for fewer problems and questions to be answered. Some things need to be learned the hard way to succeed.
+                </p>
+                
+                <h3>Environmental & Regulatory Considerations</h3>
+                <p>
+                    Finally, a concern that cannot be forgotten is environmental factors. In Alaska, regardless of where you are, some environmental concerns will arise. Whether it is summertime and you begin building a road on military land, it may once have been protected land for local natives or a natural habitat for migrating birds. Ladd Army Airfield ran into a problem many years ago with bird migration in the summertime. All different types of birds would land, and aircraft were unable to take off or land. This created a massive problem not only for the Army but also for the fire service, as the summer time is fire season. Fish and Wildlife Management created Cramer Field in Fairbanks to allow for bird migration. Slowly but surely, the number of birds decreased at Ladd Army Airfield, allowing aircraft to move. Not even the most powerful military was allowed to do what it wanted because of federal laws.
+                </p>
+            </section>
+            
+            <!-- Conclusion -->
+            <section id="conclusion">
+                <h2>5. Conclusion</h2>
+                <p>
+                    Construction Management across Alaska requires a structured approach to account for the extreme environment, the short construction season, and logistical challenges. Army Units across Alaska need to balance all of these issues with the demands of training cycles, readiness, and personnel movement. Creating a central location to house information will ease the burden over time. It will allow personnel to become familiar rapidly. This will increase overall unit readiness, project completion, and efficiency. Small wins to make everyone's life easier. Once more personnel arrive and others move on, this process will become streamlined. Others will improve the teams page to become an overall win and take lessons learned to new beginnings. Improving the whole Army, not just units here in Alaska.
+                </p>
+            </section>
+            
+            <!-- Framework for Excellence (Capstone Highlights) -->
+            <section class="featured-project">
+                <div class="project-header">
+                    <h2>Framework for Excellence</h2>
+                </div>
+                
+                <p class="project-summary">
+                    This capstone project has developed a comprehensive framework for construction management in Alaska that addresses environmental challenges, logistics constraints, and organizational development.
+                </p>
+                
+                <h3>Four Key Phases of the Framework</h3>
+                <ul class="project-points">
+                    <li><strong>Planning Phase:</strong> Comprehensive site assessment, environmental forecasting, and resource pre-positioning</li>
+                    <li><strong>Execution Phase:</strong> Standardized processes, real-time monitoring, and rapid decision-making protocols</li>
+                    <li><strong>Knowledge Management:</strong> Documentation systems, leadership continuity, and organizational learning</li>
+                    <li><strong>Risk Management:</strong> Contingency planning, weather protocols, and emergency response procedures</li>
+                </ul>
+                
+                <p class="project-reflection">
+                    This project demonstrates how construction management principles—when combined with structured analysis, knowledge systems, and adaptive leadership—can overcome even the most challenging environmental and operational constraints. The framework developed here has broader applications to construction in remote or extreme environments worldwide.
+                </p>
+            </section>
+            
+            <!-- Attachments -->
+            <section id="attachments">
+                <h2>6. Attachments & Supporting Documentation</h2>
+                <p>
+                    Below are key project materials from the Ouzinkie, Alaska gravel pad construction project, which served as the primary case study for this capstone project. The project involved construction of a gravel pad foundation for a community center in a remote village. Supporting documentation includes field photographs, project journals, site plans, and operational checklists.
+                </p>
+                
+                <h3>Project Photography Documentation</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <h4>Picture 1: Project Initiation</h4>
+                        <p>Start of Project - Initial site conditions and mobilization</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4>Picture 2: Site Survey</h4>
+                        <p>Site Surveyor labeling points for accurate grading</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4>Picture 3: Material Delivery</h4>
+                        <p>First Load of Gravel delivered to project site</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4>Picture 4: Progress</h4>
+                        <p>Project 65% Complete - Mid-phase construction</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4>Picture 5: Completion</h4>
+                        <p>Pad Completed with Project Team - Final phase</p>
+                    </div>
+                    <div class="gallery-item">
+                        <h4>Picture 6: Final Delivery</h4>
+                        <p>Community Center Completed on Pad</p>
+                    </div>
+                </div>
+                
+                <h3>Technical & Administrative Documentation</h3>
+                <ul class="project-points">
+                    <li><strong>Picture 7:</strong> Civil Site Plans - Engineering drawings and layout specifications</li>
+                    <li><strong>Picture 8-13:</strong> Journal Pages - Comprehensive field notes documenting daily operations, challenges, and solutions (6 pages total)</li>
+                    <li><strong>Picture 14:</strong> Day 0 Checklist - Pre-mobilization operational checklist and requirements</li>
+                    <li><strong>Picture 15:</strong> Day 2 Checklist - Active operations checklist showing systematic approach to field management</li>
+                </ul>
+                
+                <p style="margin-top: 2rem; font-style: italic; border-top: 2px solid #a8d5ba; padding-top: 1rem;">
+                    These supporting materials demonstrate the practical application of the construction management framework in a real-world Alaskan remote construction project. The checklists and journals exemplify the standardized processes and knowledge documentation systems recommended throughout this report.
+                </p>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Zachary A Hunter | Master of Science in Construction Facilities Engineering | University of North Carolina at Charlotte</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Army Engineer Construction Management in Alaska - Final Applied Project Report</p>
+    </footer>
 </body>
 </html>
